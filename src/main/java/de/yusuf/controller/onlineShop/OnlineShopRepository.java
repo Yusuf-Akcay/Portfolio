@@ -10,8 +10,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +19,7 @@ public class OnlineShopRepository  {
   private static final String LOCALHOSTPATH = "src/main/webapp/resources/database/products.xml";
   private static String HOSTPATH = System.getProperty("user.dir") + "/webapps/ROOT/resources/database/products.xml";
 
-  private static final File DATABASE_LOCATION = new File( HOSTPATH );
+  private static final File DATABASE_LOCATION = new File( LOCALHOSTPATH );
 
   private Products products = new Products();
   private final Marshaller marshaller;
