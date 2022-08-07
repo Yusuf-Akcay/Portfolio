@@ -1,0 +1,226 @@
+:root{
+    --rightbackground-color: #000;
+    --i:0;
+    --purpose:'';
+    --nav:'';
+}
+::-webkit-scrollbar-track{
+    background-color:  var(--rightbackground-color);
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 1vh;
+}
+::-webkit-scrollbar-corner{
+    background-color: var(--rightbackground-color);
+}
+body{
+    min-height: 100vh;
+    background: var(--rightbackground-color);
+}
+img{
+    position: relative;
+    left: 50%;
+    height: 92vh;
+    pointer-events: none;
+    transform: translate(-50%, 0) scale(.90);
+}
+.greeting{
+    position: absolute;
+    padding: 10vw;
+    top: 0;
+    color: #fff;
+ }
+.greeting h1{
+    font-size: 3.5em;
+}
+.greeting h1 span {
+    color: #aaa;
+    text-shadow: 0  0 10px darkorange;
+}
+.greeting h5{
+    color: darkorange;
+    font-size: 1em;
+}
+.verticalNav{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 200px;
+    left: 2.5%;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.verticalNav a{
+    color: #fff;
+    font-size: 1rem;
+}
+.verticalNav a:hover{
+    color: darkorange;
+}
+header{
+    display: none;
+}
+.content{
+    width: 90%;
+    margin: 0 auto;
+    color: #fff;
+}
+.about h1{
+    justify-self: left;
+    margin-bottom: 1rem;
+}
+.about .container, .about .info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+    font-size: 0.8rem;
+    align-content: space-evenly
+}
+.about .container{
+    color: white;
+}
+.about .info p a{
+    color: white;
+    text-decoration: none;
+}
+
+.about .info p:before{
+    content: '\25ba';
+    padding-right: 0.5em;
+    color: darkorange;
+}
+.carousel-cell {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: start;
+    width: 31%;
+    height: 150px;
+    margin: 0 10px 0 10px;
+    color: #aaa;
+}
+.carousel-cell .icon{
+    font-size: 3rem;
+    color: darkorange;
+    text-decoration: none;
+}
+.carousel-cell a {
+    color: #fff;
+}
+.carousel-cell h5{
+    color: #888;
+}
+.flickity-prev-next-button{
+    display: none;
+}
+body .flickity-page-dots .dot{
+    background: darkorange;
+    transform: scale(.75);
+    margin: 0 2px;
+}
+.skills{
+    margin: 100px auto;
+}
+.skills ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+}
+.skills ul li{
+    list-style: none;
+    margin: 7.5px 0;
+}
+.skills ul li h3:after{
+    content: var(--purpose);
+    margin: 0.5rem;
+    font-size: 0.7rem;
+    color: #888;
+}
+.skills ul li .bar{
+    background: #444;
+    display: block;
+    height: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    box-shadow: 0 0 10px #FF8C00b3;
+}
+.skills ul li .bar span{
+    height: 8px;
+    float: left;
+    background: darkorange;
+    border-radius: 5px;
+    width: var(--i);
+    animation: animation 2s cubic-bezier(0.27, 0.2, 0, 0.77);
+}
+@keyframes animation {
+    0%{ width: 0; }
+    100%{ width: var(--i); }
+}
+.portfolio{
+    margin: 100px auto;
+}
+.portfolio h1{
+    justify-self: left;
+    margin-bottom: 1rem;
+}
+.projectsGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    justify-items: center;
+}
+.projectsGrid a{
+    text-decoration: none;
+}
+.projectsGrid .password{
+    background-image: url(../images/passwort.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+}
+.projectsGrid .bmi{
+    background-image: url(../images/bmi.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+}
+.projectsGrid .shop{
+    background-image: url(../images/shop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+}
+.projectsGrid .formular{
+    background-image: url(../images/bewerbung.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+}
+.projectsGrid .management{
+    background-image: url(../images/verwaltung.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+}
+.projectGrid{
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.projectGrid p{
+    padding: 10px;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: white;
+    text-shadow: 0 0 10px #000;
+}

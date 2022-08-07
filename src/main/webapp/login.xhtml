@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<h:head>
+		<title>BinStaff - Login</title>
+		<link rel="stylesheet" href="resources/css/login.css"/>
+	</h:head>
+
+	<h:body>
+		<h:form id="form" prependId="false">
+			<div class="loginCard">
+				<f:facet name="title">
+					Login
+				</f:facet>
+				<f:facet name="subtitle">
+					Fiktives Unternehmen GmbH
+				</f:facet>
+				<div class="ui-inputgroup">
+					<span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+					<p:inputText type="text" id="username" placeholder="Benutzername"/>
+				</div>
+				<div class="ui-inputgroup">
+					<span class="ui-inputgroup-addon"><i class="pi pi-key"></i></span>
+					<p:password id="password" placeholder="Passwort" />
+				</div>
+				<p:commandButton type="submit" value="Als Gast" ajax="false" onclick="guestLogin()"/>
+			</div>
+		</h:form>
+		<script src="resources/js/login.js" type="text/javascript"/>
+	</h:body>
+</html>

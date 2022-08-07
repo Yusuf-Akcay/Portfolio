@@ -1,0 +1,183 @@
+:root{
+    --rightbackground-color: #ac5300;
+    --field-color: rgb(156, 32, 243);
+}
+
+::-webkit-scrollbar-track{
+    background-color:  var(--rightbackground-color);
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 1vh;
+}
+::-webkit-scrollbar-corner{
+    background-color: var(--rightbackground-color);
+}
+body{
+    min-height: 100vh;
+    background: linear-gradient(to right, #9d20f5, var(--rightbackground-color));
+}
+.content{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    justify-items: center;
+}
+.card{
+    width: 66%;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2.5rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.35);
+    margin-bottom: 1rem;
+}
+body .ui-selectonemenu{
+    background-color: transparent;
+    border: none;
+}
+body .ui-selectonemenu label.ui-selectonemenu-label{
+    border: 1px solid var(--field-color);
+    color: black;
+    font-weight: 500;
+    text-shadow: 0 0 3px #fff;
+}
+body .ui-selectonemenu .ui-selectonemenu-trigger .ui-icon{
+    color: black;
+    font-weight: 500;
+    text-shadow: 0 0 3px #fff;
+}
+body .inputBox{
+    width: 100%;
+    position: relative;
+}
+body .inputBox .input{
+    width: 100%;
+    background-color: transparent;
+    transition: 0.5s;
+    border: 1px solid var(--field-color);
+}
+body .inputBox span{
+    position:absolute;
+    left: 0;
+    pointer-events: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+body .inputBox span:after{
+    content: " *"
+}
+body .inputBox .input:valid ~ span,
+body .inputBox .input:focus ~ span{
+    color: rgb(255, 255, 255);
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background-color: var(--field-color);
+    letter-spacing: 0.2em;
+}
+body .inputBox .flag{
+    position: absolute;
+    right: 0;
+    margin: 0.5rem;
+}
+body .ui-inputfield, .startdate{
+    width: 100%;
+    background: transparent;
+    border-color: var(--field-color);
+    color: black;
+    font-weight: 500;
+    text-shadow: 0 0 3px #fff;
+}
+body .ui-float-label > .ui-inputwrapper-filled ~ label{
+    position:absolute;
+    color: rgb(255, 255, 255);
+    padding: 0 10px;
+    top: 0;
+    font-size: 0.65em;
+    background-color: var(--field-color);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+.notification{
+    position:relative;
+    grid-template-columns: 1fr;
+    max-width: 100%;
+}
+body .ui-inputfield.ui-state-focus,
+body .ui-inputfield.ui-state-hover{
+    border-color: var(--field-color);
+}
+.upload{
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+body .ui-fileupload-simple .ui-button{
+    background: var(--field-color);
+    border: 0;
+}
+body .ui-button.ui-state-hover{
+    background: rgba(156, 32, 243, 0.65);
+}
+.uploadedData{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+.uploadedName{
+    color: black;
+    font-weight: 500;
+    text-shadow: 0 0 3px #fff;
+}
+body .uploadedDel{
+    color: #900000;
+    font-weight: 500;
+    text-shadow: 0 0 3px #fff;
+    text-transform: uppercase;
+
+}
+body .uploadedDel:hover{
+    color: #900000;
+    text-decoration: none;
+    font-weight: 800;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.1rem;
+}
+body .resultBtn{
+    background: var(--field-color);
+    width: 66%;
+    height: 5rem;
+    margin-top: 3rem;
+    border-radius: 1rem;
+    font-size: 3rem;
+    text-transform: uppercase;
+    border: none;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.35);
+}
+body .resultBtn:hover{
+    background: #eed5ff;
+    color: var(--field-color);
+}
+.dlg{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: end;
+    gap: 1rem;
+}
+.second{
+    font-weight: bold;
+}
+.dlgfooter{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.findlgContainer{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1rem;
+}

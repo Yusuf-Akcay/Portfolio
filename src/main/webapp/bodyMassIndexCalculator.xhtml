@@ -1,0 +1,114 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/templates/common.xhtml">
+
+    <f:metadata>
+        <f:viewAction action="#{bodyMassIndexCalculatorController.init()}"/>
+    </f:metadata>
+
+    <ui:define name="head">
+        <link rel="stylesheet" href="resources/css/bodyMassIndex.css"/>
+    </ui:define>
+
+    <ui:define name="title">BMI Rechner</ui:define>
+
+    <ui:define name="header">
+        Body-Mass-Index Rechner
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="bmiContainer">
+            <div class="bmiContainerOut" >
+                <div class="bmiContainerIn" >
+                    <p:selectOneButton styleClass="gender" value="#{bodyMassIndexCalculatorController.gender}">
+                        <f:selectItems  value="#{bodyMassIndexCalculatorController.genders}" var="gender" itemValue="#{gender}" itemLabel="#{gender.label}"/>
+                    </p:selectOneButton>
+                    <div class="inputHW">
+                        <p:outputLabel value="Größe (in cm): "/>
+                        <p:outputLabel value="Gewicht (in Kg): "/>
+                        <p:knob max="250" min="50" value="#{bodyMassIndexCalculatorController.height}" foregroundColor="#77d0b0" backgroundColor="darkgreen"/>
+                        <p:knob max="300" value="#{bodyMassIndexCalculatorController.weight}" foregroundColor="#77d0b0" backgroundColor="darkgreen"/>
+                    </div>
+                    <p:commandButton styleClass="bmibnt" value="Berechnen" actionListener="#{bodyMassIndexCalculatorController.calculate()}" update="form"/>
+                </div>
+            </div>
+            <p:outputPanel styleClass="calculatedBmiCont" rendered="#{bodyMassIndexCalculatorController.calculatedBmi gt 0.0}">
+                <p:outputLabel styleClass="calculatedBmi" id="calculatedBmi" value="#{bodyMassIndexCalculatorController.calculatedBmi}">
+                    <p:effect type="pulsate" event="load" speed="2000"/>
+                </p:outputLabel>
+                <p:outputLabel styleClass="bmiName" id="bmiName" value="#{bodyMassIndexCalculatorController.bmiName}">
+                    <p:effect type="pulsate" event="load" speed="2000"/>
+                </p:outputLabel>
+            </p:outputPanel>
+        </div>
+        <div class="bmiTable">
+            <p>Männer</p>
+            <p>Frauen</p>
+            <table>
+                <tr>
+                    <th>BMI-Wert</th>
+                    <th>BMI-Beschreibung</th>
+                </tr>
+                <tr>
+                    <td>bis 20.0</td>
+                    <td>Untergewicht</td>
+                </tr>
+                <tr>
+                    <td>20.0 - 25.0</td>
+                    <td>Normalgewicht</td>
+                </tr>
+                <tr>
+                    <td>25.0 - 30.0</td>
+                    <td>Übergewicht</td>
+                </tr>
+                <tr>
+                    <td>30.0 - 35.0</td>
+                    <td>Fettleibig</td>
+                </tr>
+                <tr>
+                    <td>35.0 - 40.0</td>
+                    <td>Stark Fettleibig</td>
+                </tr>
+                <tr>
+                    <td>ab 40.0</td>
+                    <td>Sehr stark Fettleibig</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>BMI-Wert</th>
+                    <th>BMI-Beschreibung</th>
+                </tr>
+                <tr>
+                    <td>bis 19.0</td>
+                    <td>Untergewicht</td>
+                </tr>
+                <tr>
+                    <td>19.0 - 24.0</td>
+                    <td>Normalgewicht</td>
+                </tr>
+                <tr>
+                    <td>24.0 - 30.0</td>
+                    <td>Übergewicht</td>
+                </tr>
+                <tr>
+                    <td>30.0 - 35.0</td>
+                    <td>Fettleibig</td>
+                </tr>
+                <tr>
+                    <td>35.0 - 40.0</td>
+                    <td>Stark Fettleibig</td>
+                </tr>
+                <tr>
+                    <td>ab 40.0</td>
+                    <td>Sehr stark Fettleibig</td>
+                </tr>
+            </table>
+        </div>
+    </ui:define>
+</ui:composition>

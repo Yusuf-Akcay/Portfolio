@@ -1,0 +1,102 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/templates/common.xhtml">
+
+    <ui:define name="head">
+        <link rel="stylesheet" href="resources/css/index.css"/>
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"/>
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"/>
+    </ui:define>
+
+    <ui:define name="title">Homepage</ui:define>
+
+    <ui:define name="bg-img">
+        <img src="resources/images/wallpaper2.png" class="img"/>
+        <div class="greeting">
+            <h1>Hey,<br/>
+                ich bin <span id="text"></span></h1>
+            <h5>Junior Java Developer</h5>
+        </div>
+        <div class="verticalNav">
+            <a href="#"><i class="fa fa-house"></i></a>
+            <a href="#about"><i class="fa fa-user"></i></a>
+            <a href="#skills"><i class="fa fa-star"></i></a>
+            <a href="#portfolio"><i class="fa fa-desktop"></i></a>
+        </div>
+    </ui:define>
+
+    <ui:define name="content">
+        <div id="about" class="about">
+            <h1>About</h1>
+            <div class="container">
+                <div class="info">
+                    <p><span>Geburtstag:</span> 20. Sep 1991</p>
+                    <p><span>Alter:</span> 30</p>
+                    <p><span>Webseite:</span></p>
+                    <p><span>Abschluss:</span> Fachinformatiker AE</p>
+                    <p><span>Schwerpunkt:</span> Java, SpringBoot, JSF, HTMl, CSS</p>
+                    <p><span>Email:</span> <a href="mailto:yusufakcay@live.de">yusufakcay@live.de</a> </p>
+                    <p><span>Stadt:</span> Remscheid, NRW</p>
+                    <p><span>Status:</span> Suchend</p>
+                </div>
+                <div class="js-flickity" data-flickity-options='{ "wrapAround": true }'>
+                    <div class="carousel-cell">
+                        <i class="fa-brands fa-js-square icon"/>
+                        <a href="https://de.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                        <h5>Neben HTML und CSS, die für die Struktur und Optik einer Webseite das A und O sind, wurde an einigen Stellen JavaScript als Clientseitige Scriptsprache eingesetzt.</h5>
+                    </div>
+                    <div class="carousel-cell">
+                        <i class="fa fa-database icon"/>
+                        <a href="https://www.h2database.com/html/main.html" target="_blank">H2 Database</a>
+                        <h5>Als 'Embeddet Database' wurde die H2 Datenbank ausgewählt, in der lediglich nur 2 Profile gespeichert sind, die für das Teil-Projekt 'Personalverwalter' in Verwendung kommen.</h5>
+                    </div>
+                    <div class="carousel-cell">
+                        <i class="fa fa-feather-pointed icon"/>
+                        <a href="https://www.apache.org" target="_blank">Apache</a>
+                        <h5>2 Projekte von Apache Software Foundaition finden hier ihren gebrauch. Zu einem 'Maven', welches die einbindung der nötigen Dependencies ermöglicht und zum anderen 'Tomcat', auf dem das ganze läuft.</h5>
+                    </div>
+                    <div class="carousel-cell">
+                        <i class="fa fa-layer-group icon"/>
+                        <a href="https://www.primefaces.org" target="_blank">Primefaces</a>
+                        <h5>Java Anwendungen, welche die Jakarta Server Faces(JSF) nutzen, finden bei der Bibliothek von 'PrimeFaces' eine vielzahl an vorgefertigten Komponenten.</h5>
+                    </div>
+                    <div class="carousel-cell">
+                        <i class="fa-brands fa-java icon"/>
+                        <a href="https://de.wikipedia.org/wiki/Java-Technologie" target="_blank">Java</a>
+                        <h5>Seit dem ersten Tag, meiner Karriere als Entwickler, ist Java meine Muttersprache.<br/>Alle Projekt auf dieser Webseite wurden mit Java unter der Nutzung von JSF + SpringBoot entwickelt.</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="skills" class="skills">
+            <h1>Skills</h1>
+            <ul>
+                <li><h3 style="--purpose:'Frontend';">HTML</h3><span class="bar"><span style="--i: 80% "/></span></li>
+                <li><h3 style="--purpose:'Backend';">SQL / JPA</h3><span class="bar"><span style="--i: 50%;"/></span></li>
+                <li><h3 style="--purpose:'Frontend';">CSS</h3><span class="bar"><span style="--i: 75%"/></span></li>
+                <li><h3 style="--purpose:'Backend';">SpringBoot</h3><span class="bar"><span style="--i: 70%;"/></span></li>
+                <li><h3 style="--purpose:'Backend';">Java</h3><span class="bar"><span style="--i: 90%;"/></span></li>
+                <li><h3 style="--purpose:'Frontend';">JSF + PrimeFaces</h3><span class="bar"><span style="--i: 80%;"/></span></li>
+                <li><h3 style="--purpose:'Frontend';">JavaScript</h3><span class="bar"><span style="--i: 65%;"/></span></li>
+            </ul>
+        </div>
+
+        <div id="portfolio" class="portfolio">
+            <h1>Pojekte / Portfolio</h1>
+            <div class="projectsGrid">
+                <a class="projectGrid password" href="passwordgenerator.xhtml"><p>Passwort Generator</p></a>
+                <a class="projectGrid bmi" href="bodyMassIndexCalculator.xhtml"><p>BMI Rechner</p></a>
+                <a class="projectGrid shop" href="onlineShop.xhtml"><p>Online Shop</p></a>
+                <a class="projectGrid formular" href="formular.xhtml"><p>Formulare</p></a>
+                <a class="projectGrid management" href="userManager.xhtml"><p>Personalverwalter</p></a>
+            </div>
+        </div>
+        <script src="resources/js/index.js" type="text/javascript"/>
+    </ui:define>
+
+</ui:composition>

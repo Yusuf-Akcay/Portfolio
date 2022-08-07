@@ -1,0 +1,50 @@
+<products>
+    <product>
+        <productName>Harry Lotter Teil 1</productName>
+        <productDescription>Harry Lotter und der Baum der Weisen ist das erste Buch der siebenteiligen Harry-Lotter-Romanreihe</productDescription>
+        <productPrice>5.99</productPrice>
+        <availability>true</availability>
+        <category>BOOK</category>
+        <picPath>resources/images/onlineshop/buch1.png</picPath>
+    </product>
+    <product>
+        <productName>Banana U3</productName>
+        <productDescription>Das neue U3 von Banana Technicals ist das beste Smartphone seiner Klasse</productDescription>
+        <productPrice>699.99</productPrice>
+        <availability>true</availability>
+        <category>TECHNIC</category>
+        <picPath>resources/images/onlineshop/technik1.png</picPath>
+    </product>
+    <product>
+        <productName>Cowboy Textil</productName>
+        <productDescription>Die Jeans für Outdoor-Abenteuer Liebhaber</productDescription>
+        <productPrice>13.99</productPrice>
+        <availability>false</availability>
+        <category>CLOTHING</category>
+        <picPath>resources/images/onlineshop/kleidung1.png</picPath>
+    </product>
+    <product>
+        <productName>Gugo Noss</productName>
+        <productDescription>2-Teiler-Anzug im Extra Slim Fit aus reiner Schurwolle von Gugo Noss</productDescription>
+        <productPrice>149.99</productPrice>
+        <availability>true</availability>
+        <category>CLOTHING</category>
+        <picPath>resources/images/onlineshop/kleidung2.png</picPath>
+    </product>
+    <product>
+        <productName>Segen der Karibik</productName>
+        <productDescription>Bestseller-Roman von Yusuf Akcay</productDescription>
+        <productPrice>12.99</productPrice>
+        <availability>false</availability>
+        <category>BOOK</category>
+        <picPath>resources/images/onlineshop/buch2.png</picPath>
+    </product>
+    <product>
+        <productName>Microhard R2-D2</productName>
+        <productDescription>Lass deiner Kreativität vollen Lauf mit dem 16“ Laptop von Mircohard, 8 GB RAM, 256 GB SSD Speicher</productDescription>
+        <productPrice>1349.99</productPrice>
+        <availability>true</availability>
+        <category>TECHNIC</category>
+        <picPath>resources/images/onlineshop/technik2.png</picPath>
+    </product>
+</products>

@@ -1,0 +1,28 @@
+:root{--rightbackground-color: #e3d500;}
+
+::-webkit-scrollbar-track{
+    background-color:  var(--rightbackground-color);
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 1vh;
+}
+::-webkit-scrollbar-corner{
+    background-color: var(--rightbackground-color);
+}
+body{
+    min-height: 100vh;
+    background: linear-gradient(to right, #a30000, var(--rightbackground-color));
+}
+
+body .table{
+    text-align-last: center;
+    padding: 0 20rem;
+}
+.ui-datatable-tablewrapper {
+    border-radius: 1rem;
+}
+.img{
+    width: 2rem;
+    border-radius: 50%;
+}

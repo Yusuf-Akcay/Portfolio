@@ -1,0 +1,221 @@
+:root{--rightbackground-color: #fd58cb;}
+
+::-webkit-scrollbar-track{
+    background-color:  var(--rightbackground-color);
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 1vh;
+}
+::-webkit-scrollbar-corner{
+    background-color: var(--rightbackground-color);
+}
+body{
+    min-height: 100vh;
+    background: linear-gradient(to right, #f9d760, var(--rightbackground-color));
+}
+.speedDial{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    margin-left: -2.5rem;
+}
+.toggleActive{
+    grid-template-columns: 1fr 1fr;
+    margin-left: -1rem;
+}
+.hiddenIcon{
+    display: none;
+}
+body .ui-speeddial-button.ui-button.ui-button-icon-only {
+    width: 3rem;
+    height: 2rem;
+    border: 0;
+    color: white;
+}
+body .ui-speeddial-action{
+    width: 3rem;
+    height: 2rem;
+    border: 0;
+    color: white;
+    background: none;
+}
+body .ui-speeddial-action:hover{
+    background: none;
+    color: #fff;
+}
+.productContainer{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+.card{
+    position: relative;
+    margin-top: 4rem;
+    height: 200px;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+    transition: 0.5s;
+}
+.card:hover{
+    height:450px;
+}
+.imgBox{
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    transition: 0.5s;
+}
+.card:hover .imgBox{
+    width: 200px;
+    height: 200px;
+}
+.imgBox .img{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.card .cardContent{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+.card .cardContent .details{
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+    transform: translateY(160px);
+}
+.card:hover .cardContent .details{
+    transform: translateY(0px);
+}
+.card .cardContent .details h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.2em;
+}
+.card .cardContent .details h2 span{
+    display: inline-block;
+    height: 2em;
+    font-size: 0.5em;
+    font-weight: 300;
+    opacity: 0.75;
+    overflow: hidden;
+}
+.card:hover .cardContent .details h2 span{
+    height: auto;
+}
+.card .cardContent .details .data{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+.card .cardContent .details .data h3{
+    font-size: 1em;
+    color: #555;
+    line-height: 1.2em;
+    font-weight: 600;
+}
+.card .cardContent .details .data h3 span{
+    font-size: 0.85em;
+    font-weight: 400;
+    opacity: 0.5;
+}
+.card .cardContent .details .actionBtn .btn{
+    padding: 10px 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-weight: 500;
+    background: #ff5f95;
+    color: #fff;
+}
+.cartContainer{
+    display: grid;
+    gap: 1rem;
+    justify-content: center;
+}
+.cartItem{
+    width: 18rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+    transition: 0.5s;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+.itemData{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 1rem;
+}
+.itemData p{
+    color: hsl(0, 0%, 51%);
+}
+.itemData p span{
+    font-weight: bold;
+    color: hsl(0, 0%, 0%);
+}
+body .cartdelete{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+body .deletebtn{
+    background-color: #9a0000;
+    border: 0;
+}
+body .deletebtn:hover{
+    background-color: #ff3b3b;
+}
+.checkoutContainer{
+    position: absolute;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    width: 18rem;
+    bottom: 10px;
+ }
+body .checkoutbtn{
+    width: 100%;
+    margin-top: 20px;
+    background-color: forestgreen;
+    border-color: black;
+}
+.checkoutContainer p{
+    color: hsl(0, 0%, 51%);
+}
+.checkoutContainer p span{
+    font-weight: bold;
+    color: hsl(0, 0%, 0%);
+}
+.dialog{
+    display: flex;
+    align-items: center;
+}

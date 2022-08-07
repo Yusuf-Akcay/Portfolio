@@ -1,0 +1,87 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jstl/core"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/templates/common.xhtml">
+
+    <f:metadata>
+        <f:viewAction action="#{onlineShopController.init()}"/>
+    </f:metadata>
+
+    <ui:define name="head">
+        <link rel="stylesheet" href="resources/css/onlineShop.css"/>
+    </ui:define>
+
+    <ui:define name="title">Online Shop</ui:define>
+
+    <ui:define name="header">
+        <p>Online Shop GmbH</p>
+        <div class="speedDial">
+            <p:speedDial value="Kategorie Filtern " direction="right" showIcon="fa fa-tags" buttonStyleClass="ui-button-outlined" onClick="categorytoggle();">
+                <p:menuitem icon="fa fa-ban" actionListener="#{onlineShopController.notFilter()}" update="form"/>
+                <p:menuitem icon="fa fa-shirt" actionListener="#{onlineShopController.clothingFilter()}" update="form"/>
+                <p:menuitem icon="fa fa-computer" actionListener="#{onlineShopController.technicFilter()}" update="form"/>
+                <p:menuitem icon="fa fa-book" actionListener="#{onlineShopController.bookFilter()}" update="form"/>
+            </p:speedDial>
+        </div>
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="productContainer" id="content" onkeyup="ss">
+            <ui:repeat value="#{onlineShopController.showProducts}" var="product">
+                <div class="card">
+                    <div class="imgBox">
+                        <p:graphicImage styleClass="img" value="#{product.picPath}"/>
+                    </div>
+                    <div class="cardContent">
+                        <div class="details">
+                            <h2>#{product.productName}<br/>
+                            <span>#{product.productDescription}</span></h2>
+                            <div class="data">
+                                <h3>#{product.category.label}<br/><span><em class="pi pi-tag"/></span></h3>
+                                <h3>#{onlineShopController.productPriceAsString(product)} €<br/><span>Preis</span></h3>
+                                <h3>#{product.availability ? 'Auf Lager' : ' Ausverkauft'}<br/><span>verfügbarkeit</span></h3>
+                            </div>
+                            <div class="actionBtn">
+                                <p:commandButton styleClass="btn" value="In den Warenkorb" actionListener="#{onlineShopController.addToCart(product)}" update="form:sidebar" disabled="#{not product.availability}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:repeat>
+            <p:sidebar id="sidebar" position="right" showCloseIcon="false" visible="#{onlineShopController.onlineShopService.cart().size() > 0 ? true : false}" modal="false" onShow="setMarginRight()">
+                <div class="cartContainer">
+                    <p:repeat value="#{onlineShopController.onlineShopService.cart()}" var="product">
+                        <div class="cartItem">
+                            <div class="header">
+                                #{product.quantity} x #{product.productName}
+                            </div>
+                            <div class="itemData">
+                                <p>Produktpreis à <span>#{product.productPrice} €</span></p>
+                                <p>Totalpreis <span>#{onlineShopController.totalProductPrice( product )} €</span></p>
+                            </div>
+                            <div class="cartdelete">
+                                <p:commandButton styleClass="deletebtn" value="Löschen" icon="fa fa-trash" actionListener="#{onlineShopController.deleteFromCart( product )}" onclick="removeMarginRight();" update="form:sidebar"/>
+                            </div>
+                        </div>
+                    </p:repeat>
+                </div>
+                <div class="checkoutContainer">
+                    <p>Gesamtkosten: <span>#{onlineShopController.totalPrice()} €</span></p>
+                    <p:commandButton styleClass="checkoutbtn" value="Zur Kasse" onclick="PF('checkout').show();"/>
+                </div>
+            </p:sidebar>
+            <p:dialog widgetVar="checkout">
+                <div class="dialog">
+                    <p>Die Kasse ist zurzeit leider geschlossen</p>
+                    <p:graphicImage url="/resources/images/onlineshop/smile.png"/>
+                </div>
+            </p:dialog>
+        </div>
+        <script src="resources/js/onlineshop.js"></script>
+    </ui:define>
+</ui:composition>

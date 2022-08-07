@@ -1,0 +1,159 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="WEB-INF/templates/common.xhtml">
+
+    <ui:define name="head">
+        <h:outputStylesheet name="inputphone/inputphone.css" library="primefaces-extensions" />
+        <link rel="stylesheet" href="resources/css/formular.css"/>
+    </ui:define>
+
+    <ui:define name="title">Bewerbung</ui:define>
+
+    <ui:define name="header">Bewerbungsformular</ui:define>
+
+    <ui:define name="content">
+        <h2>Persönliche Daten</h2>
+        <div class="card">
+            <p:selectOneMenu value="#{formularController.gender}" required="true" requiredMessage="Bitte Geschlecht auswählen.">
+                <f:selectItem noSelectionOption="true" itemLabel="--Geschlecht--"/>
+                <f:selectItems value="#{formularController.genders}" var="gender" itemValue="#{gender}" itemLabel="#{gender.label}"/>
+            </p:selectOneMenu>
+            <p:selectOneMenu value="#{formularController.title}">
+                <f:selectItem noSelectionOption="true" itemLabel="--Titel--"/>
+                <f:selectItems value="#{formularController.titles}" var="title" itemValue="#{title}" itemLabel="#{title.label}"/>
+            </p:selectOneMenu>
+            <div class="inputBox">
+                <p:inputText styleClass="input" value="#{formularController.firstname}" required="true" requiredMessage="Bitte Vorname eintragen"/>
+                <span>Vorname</span>
+            </div>
+            <div class="inputBox">
+                <p:inputText styleClass="input" value="#{formularController.lastname}" required="true" requiredMessage="Bitte Nachname eintragen"/>
+                <span>Nachname</span>
+            </div>
+            <div class="inputBox">
+                <p:inputText styleClass="input" value="#{formularController.email}" required="true" requiredMessage="Bitte E-Mail-Adresse eintragen"/>
+                <span>E-Mail-Adresse</span>
+            </div>
+            <div class="inputBox">
+                <div class="flag">
+                    <div class="iti__flag iti__de" style="margin-top: 6px"></div>
+                </div>
+                <p:inputText styleClass="input" value="#{formularController.phone}" required="true" requiredMessage="Bitte Telefonnummer eintragen"/>
+                <span>Telefonnummer</span>
+            </div>
+        </div>
+
+        <h2>Rahmendaten</h2>
+        <div class="card">
+            <div class="inputBox">
+                <p:inputText styleClass="input" value="#{formularController.salaryExpectation}" required="true" requiredMessage="Bitte Wunschgehalt eintragen"/>
+                <span>Wunschgehalt im Jahr</span>
+            </div>
+            <span class="ui-float-label">
+                <p:datePicker styleClass="startdate" value="#{formularController.dateDe}" locale="de" monthNavigator="true" readonlyInput="true" pattern="dd.MM.yyyy" mindate="#{formularController.minDate}" showButtonBar="true" showWeek="true"/>
+                <p:outputLabel value="Starttermin" indicateRequired="true"/>
+            </span>
+            <p:selectOneMenu value="#{formularController.foundAt}" required="true" requiredMessage="Feld muss ausgewählt werden.">
+                <f:selectItem noSelectionOption="true" itemLabel="Wie hast du uns gefunden? *"/>
+                <f:selectItem itemValue="Empfelung" itemLabel="Empfelung"/>
+                <f:selectItem itemValue="Loogle" itemLabel="Loogle"/>
+                <f:selectItem itemValue="Wing" itemLabel="Wing"/>
+                <f:selectItem itemValue="KinkedIn" itemLabel="KinkedIn"/>
+                <f:selectItem itemValue="StepTone" itemLabel="StepTone"/>
+                <f:selectItem itemValue="Get to IT" itemLabel="Get to IT"/>
+            </p:selectOneMenu>
+            <p:selectOneMenu value="#{formularController.place}" required="true" requiredMessage="Bitte Standort auswählen.">
+                <f:selectItem noSelectionOption="true" itemLabel="Standort *"/>
+                <f:selectItem itemValue="München" itemLabel="München"/>
+                <f:selectItem itemValue="Frankfurt" itemLabel="Frankfurt"/>
+                <f:selectItem itemValue="Berlin" itemLabel="Berlin"/>
+                <f:selectItem itemValue="Hamburg" itemLabel="Hamburg"/>
+                <f:selectItem itemValue="Köln" itemLabel="Köln"/>
+                <f:selectItem itemValue="Düsseldorf" itemLabel="Düsseldorf"/>
+            </p:selectOneMenu>
+        </div>
+
+        <h2>Persönliche Nachricht</h2>
+        <div class="card notification">
+            <p:inputTextarea value="#{formularController.notification}" autoResize="true" maxlength="1024" rows="4"/>
+        </div>
+
+        <h2>Anlagen</h2>
+        <div jsf:id="upload" class="card upload">
+            <p:fileUpload styleClass="uploader" listener="#{formularController.uploadFileLetter}" skinSimple="true" mode="simple" auto="true" label="Anschreiben *" accept=".pdf" chooseIcon="fa fa-paperclip" update="upload msg"/>
+            <p:fileUpload styleClass="uploader" listener="#{formularController.uploadFileResume}" skinSimple="true" mode="simple" auto="true" label="Lebenslauf *" accept=".pdf" chooseIcon="fa fa-paperclip" update="upload msg"/>
+            <span class="uploadedData">
+                <p:outputLabel styleClass="uploadedName" value="#{formularController.uploadedFileLetter.fileName}"/>
+                <p:commandLink styleClass="uploadedDel" immediate="true" value="Löschen" actionListener="#{formularController.removeUploadedLetter}" rendered="#{not empty formularController.uploadedFileLetter}" update="upload msg"/>
+            </span>
+            <span class="uploadedData">
+                <p:outputLabel styleClass="uploadedName" value="#{formularController.uploadedFileResume.fileName}"/>
+                <p:commandLink styleClass="uploadedDel" immediate="true" value="Löschen" actionListener="#{formularController.removeUploadedResume}"  rendered="#{not empty formularController.uploadedFileResume}" update="upload msg"/>
+            </span>
+
+            <p:fileUpload id="ggg" styleClass="uploader" listener="#{formularController.uploadFileTestimonials}" skinSimple="true" mode="simple" auto="true" multiple="true" label="Zeugnisse" accept=".pdf" chooseIcon="fa fa-paperclip" fileLimit="3" update="form:upload form:msg"/>
+            <p:fileUpload styleClass="uploader" listener="#{formularController.uploadFileOtherFiles}" skinSimple="true" mode="simple" auto="true" multiple="true" label="weitere Anlage" accept=".pdf" chooseIcon="fa fa-paperclip" fileLimit="3" update="form:upload form:msg"/>
+            <span class="uploadedData">
+                <ui:repeat value="#{formularController.uploadedFileTestimonials}" var="fileTestimonial">
+                    <p:outputLabel styleClass="uploadedName" value="#{fileTestimonial.fileName}"/>
+                    <p:commandLink styleClass="uploadedDel" immediate="true" value="Löschen" actionListener="#{formularController.removeUploadedTestimonials( fileTestimonial )}" rendered="#{formularController.uploadedFileTestimonials.size() gt 0.0}" update="form:upload form:msg"/>
+                </ui:repeat>
+            </span>
+            <span class="uploadedData">
+                <ui:repeat value="#{formularController.uploadedFileOtherFiles}" var="fileOtherFile">
+                    <p:outputLabel styleClass="uploadedName" value="#{fileOtherFile.fileName}"/>
+                    <p:commandLink styleClass="uploadedDel" immediate="true" value="Löschen" actionListener="#{formularController.removeUploadedOtherFiles( fileOtherFile )}" rendered="#{formularController.uploadedFileOtherFiles.size() gt 0.0}" update="form:upload form:msg"/>
+                </ui:repeat>
+            </span>
+        </div>
+
+        <p:commandButton styleClass="resultBtn" value="Absenden" actionListener="#{formularController.check()}" update="form"/>
+
+        <p:dialog id="confirmDlg" widgetVar="ResultDlg" width="50%" visible="#{formularController.checked}">
+            <div class="dlg">
+                <p class="first">Geschlecht:</p>
+                <p class="second">#{formularController.gender.label}</p>
+                <p class="first">Titel:</p>
+                <p class="second">#{formularController.title}</p>
+                <p class="first">Vorname:</p>
+                <p class="second">#{formularController.firstname}</p>
+                <p class="first">Nachname:</p>
+                <p class="second">#{formularController.lastname}</p>
+                <p class="first">E-Mail-Adresse:</p>
+                <p class="second">#{formularController.email}</p>
+                <p class="first">Telefonnummer:</p>
+                <p class="second">#{formularController.phone}</p>
+                <p class="first">Gehaltsvorstellung:</p>
+                <p class="second">#{formularController.salaryExpectation} €</p>
+                <p class="first">Startzeit:</p>
+                <p class="second">#{formularController.dateDe.toLocaleString().replace(', 00:00:00','')}</p>
+                <p class="first">Uns gefunden über:</p>
+                <p class="second">#{formularController.foundAt}</p>
+                <p class="first">Standort:</p>
+                <p class="second">#{formularController.place}</p>
+                <p class="first">Nachricht:</p>
+                <p class="second">#{formularController.notification}</p>
+            </div>
+            <div class="dlgfooter">
+                <p:outputLabel value="Ich versichere die Echtheit der Daten."/>
+                <p:commandButton value="Absenden" actionListener="#{formularController.confirm}" update="finDlg"/>
+            </div>
+        </p:dialog>
+
+        <p:dialog id="finDlg" widgetVar="finDlg" visible="#{formularController.finDlg}" closable="false" modal="true">
+            <div class="findlgContainer">
+                <p>Bewerbung erfolgreich versendet.</p>
+                <p:outputLabel id="count" value="Zurück in (#{formularController.finCounter} sekunden)"/>
+                <p:poll id="finCounter" interval="1" listener="#{formularController.decrimFinCount}" update="count" rendered="#{formularController.finDlg}"/>
+                <p:poll id="finPoll" interval="10" listener="#{formularController.removeAll}" update="form" rendered="#{formularController.finDlg}"/>
+            </div>
+        </p:dialog>
+        <script src="resources/js/formular.js" type="text/javascript"/>
+    </ui:define>
+</ui:composition>

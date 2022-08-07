@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@300;400;500;700;900&display=swap');
+:root{--rightbackground-color: rgba(0,172,193);}
+
+::-webkit-scrollbar{
+    width: 0.5em;
+    height: 0.5em;
+}
+::-webkit-scrollbar-track{
+    background-color:  var(--rightbackground-color);
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 1vh;
+}
+::-webkit-scrollbar-corner{
+    background-color: var(--rightbackground-color);
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    min-height: 100vh;
+    background: linear-gradient(to right, rgba(84,58,183,1), var(--rightbackground-color));
+}
+header{
+    margin: 1rem 0;
+    display: flex;
+}
+header h1 {
+    flex-grow: 0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 3rem;
+    color: rgba(255,255,255,0.75);
+}
+.content{
+    padding: 20px;
+    margin-bottom: 3rem
+}

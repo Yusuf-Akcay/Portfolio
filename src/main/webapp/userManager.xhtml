@@ -1,0 +1,42 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="WEB-INF/templates/common.xhtml">
+
+    <f:metadata>
+        <f:viewAction action="#{userController.init()}"/>
+    </f:metadata>
+
+    <ui:define name="head">
+        <link rel="stylesheet" href="resources/css/userManager.css"/>
+    </ui:define>
+
+    <ui:define name="title">Mitarbeiterverwaltung</ui:define>
+
+    <ui:define name="header">Mitarbeiterverwaltung</ui:define>
+
+    <ui:define name="content">
+        <p:dataTable styleClass="table" value="#{userController.allUser}" var="user" rowKey="#{user.id}" selectionMode="single" selection="#{userController.detailingUser}">
+            <p:ajax event="rowSelect" update="form:detailDlg" oncomplete="PF('detailDlg').show()"/>
+            <p:column>
+                <image class="img" src="#{'resources/images/EmployeeManager/img.png'}"/>
+            </p:column>
+            <p:column headerText="Name Nachname">
+                <p:outputLabel value="#{user.firstName} #{user.lastName}"/>
+            </p:column>
+            <p:column headerText="Angestellt als">
+                <p:outputLabel value="#{user.position}"/>
+            </p:column>
+        </p:dataTable>
+        <p:dialog id="detailDlg" header="Mitarbeiter Details" widgetVar="detailDlg" width="30rem" >
+            <p:panel header="#{userController.detailingUser.firstName} #{userController.detailingUser.lastName}" footer="#{userController.detailingUser.email}">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias, culpa hic id illo ipsa nostrum quaerat quas qui quod, repellendus sint. A ad alias dolor eveniet expedita illum, iusto labore porro quos soluta! Animi aut, blanditiis culpa cumque dolorum enim impedit magni minima modi nihil odit quam reiciendis totam!
+            </p:panel>
+        </p:dialog>
+    </ui:define>
+
+</ui:composition>
